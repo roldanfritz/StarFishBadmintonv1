@@ -1,0 +1,8 @@
+{
+  "name": "StarFishBadminton",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "1e6ab3e4"
+}
