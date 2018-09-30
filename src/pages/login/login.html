@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <form class="bigPadding" [formGroup]="loginForm" (ngSubmit)="login()">
+    <h2>Login with email.</h2>
+    <ion-list>
+      <ion-item>
+          <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+      <button type="submit" ion-button full [disabled]="!loginForm.valid">Login</button>
+    </ion-list>
+  </form>
+  <button ion-button clear full outline [navPush]="signupPage">New to StarFish?</button>
+  <button ion-button clear full outline [navPush]="forgottenPage">Forgot password?</button>
+</ion-content>

@@ -1,0 +1,14 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{currentPlayer?.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="bigPadding">
+    <h1>{{currentPlayer?.name}}</h1>
+    <img [src]="currentPlayer?.profilePic">
+    <p>Onboarded? {{currentPlayer?.onboardComplete}}</p>
+    <button ion-button full (click)="logout()">Logout</button>
+  </div>
+</ion-content>

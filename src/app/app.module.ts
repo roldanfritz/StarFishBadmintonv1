@@ -3,38 +3,69 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AuthService } from '../services/auth';
+import { SignUpPage } from '../pages/signup/signup';
+import { LoginPage } from '../pages/login/login';
+
+import {GooglePlus} from '@ionic-native/google-plus';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { PlayerService } from '../services/player';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Facebook } from '@ionic-native/facebook';
+import { ProfilePage } from '../pages/profile/profile';
+import { CheckEmailPage } from '../pages/forgotten/check-email/check-email';
+import { ForgottenPage } from '../pages/forgotten/forgotten';
+import { OnboardingPage } from '../pages/onboarding/onboarding';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDBk-Sw4dx9zHI_lIf_nh4ZbfUDQbdkOPo",
+  authDomain: "starfishbadminton.firebaseapp.com",
+  databaseURL: "https://starfishbadminton.firebaseio.com",
+  projectId: "starfishbadminton",
+  storageBucket: "starfishbadminton.appspot.com",
+  messagingSenderId: "925773802154"
+};
+
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    TabsPage,
+    SignUpPage,
+    LoginPage,
+    ProfilePage,
+    CheckEmailPage,
+    ForgottenPage,
+    OnboardingPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    TabsPage,
+    SignUpPage,
+    LoginPage,
+    ProfilePage,
+    CheckEmailPage,
+    ForgottenPage,
+    OnboardingPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthService, GooglePlus, PlayerService, AngularFirestore, Facebook
   ]
 })
 export class AppModule {}

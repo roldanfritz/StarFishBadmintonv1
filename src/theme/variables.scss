@@ -14,7 +14,35 @@ $app-direction: ltr;
 
 @import "ionic.globals";
 
+@font-face{
+  font-family: "barlow-medium";
+  src: url("../assets/fonts/Barlow-Medium.otf");
+}
 
+@font-face{
+  font-family: "barlow-regular";
+  src: url("../assets/fonts/Barlow-Regular.otf");
+}
+
+@font-face{
+  font-family: "barlowcondensed-medium";
+  src: url("../assets/fonts/BarlowCondensed-Medium.otf");
+}
+
+@font-face{
+  font-family: "cervoNeue-BoldNeue";
+  src: url("../assets/fonts/CervoNeue-BoldNeue.otf");
+}
+
+
+@font-face{
+  font-family: "cervoNeue-RegularNeue";
+  src: url("../assets/fonts/CervoNeue-RegularNeue.otf");
+}
+
+body, h1,h2,h3,h4,h5,p,span,div{
+  font-family: "barlow-regular" !important;
+}
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
@@ -22,7 +50,9 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-
+.bigPadding{
+  padding: 2.5em;
+}
 
 
 // Named Color Variables

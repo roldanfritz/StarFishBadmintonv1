@@ -82,4 +82,15 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <plugin name="cordova-plugin-googleplus" spec="5.3.2">
+        <variable name="REVERSED_CLIENT_ID" value="io.ionic.starter" />
+        <variable name="WEB_APPLICATION_CLIENT_ID" value="161143830923-gn578dd1r64mter6tu19h9v4kne5hehf.apps.googleusercontent.com" />
+        <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
+    </plugin>
+    <plugin name="cordova-plugin-facebook4" spec="3.0.0">
+        <variable name="APP_ID" value="723781384681250" />
+        <variable name="APP_NAME" value="StarFish Badminton" />
+        <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.36.0" />
+    </plugin>
+    <engine name="android" spec="7.1.1" />
 </widget>
