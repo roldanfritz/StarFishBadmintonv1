@@ -1,3 +1,16 @@
 page-onboarding {
-
+    .navigationButton{
+        position: absolute;
+        
+    }
+    .prev{
+        z-index:100;
+        left:0;
+        bottom:1em;
+    }
+    .next{
+        z-index:100;
+        right:0;
+        bottom:1em;
+    }
 }

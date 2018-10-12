@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import * as firebase from 'firebase';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { GooglePlus } from '@ionic-native/google-plus';
@@ -10,7 +10,7 @@ export class AuthService{
        private gplus: GooglePlus, public fb: Facebook){}
 
     signup(email:string, password:string){
-       return firebase.auth().createUserWithEmailAndPassword(email,password);
+      return firebase.auth().createUserWithEmailAndPassword(email,password);
     }   
     
     login(email:string, password:string)
@@ -23,48 +23,34 @@ export class AuthService{
     }
 
     async nativeGoogleLogin(): Promise<any> {
-        try {
       
-          const gplusUser = await this.gplus.login({
-            'webClientId': "161143830923-gn578dd1r64mter6tu19h9v4kne5hehf.apps.googleusercontent.com",
-            'offline': true,
-            'scopes': 'profile email'
-          });
-      
-          return await this.afAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken));
-      
-        } catch(err) {
-          console.log(err)
-        }
-      }
+      const gplusUser = await this.gplus.login({
+        'webClientId': "925773802154-aq45orcbmuip5178meg3pbo1o32bire8.apps.googleusercontent.com",
+        'offline': true,
+        'scopes': 'profile email'
+      });
 
-      async webGoogleLogin(): Promise<any> {
-        try {
-          const provider = new firebase.auth.GoogleAuthProvider();
-          return await this.afAuth.auth.signInWithPopup(provider);
-      
-        } catch(err) {
-          console.log(err)
-        }
-      }
+      console.log("GPLUS USER IS " + gplusUser);
+      return await this.afAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken));
+    }
 
-      nativeFacebookLogin(): Promise<any>
-      {
-          return this.fb.login(["public_profile"]);
-      }
+    async webGoogleLogin(): Promise<any> {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      return await this.afAuth.auth.signInWithPopup(provider);
+    }
 
-      webFacebookLogin() : Promise<any>{
-        try {
-          const provider = new firebase.auth.FacebookAuthProvider();
-          return this.afAuth.auth.signInWithPopup(provider);
-      
-        } catch(err) {
-          console.log(err)
-        }
-      }
+    nativeFacebookLogin(): Promise<any>
+    {
+      return this.fb.login(["public_profile"]);
+    }
 
-      sendForgottenPassword(email:string)
-      {
-        return this.afAuth.auth.sendPasswordResetEmail(email);
-      }
+    webFacebookLogin() : Promise<any>{
+      const provider = new firebase.auth.FacebookAuthProvider();
+      return this.afAuth.auth.signInWithPopup(provider);
+    }
+
+    sendForgottenPassword(email:string)
+    {
+      return this.afAuth.auth.sendPasswordResetEmail(email);
+    }
 }

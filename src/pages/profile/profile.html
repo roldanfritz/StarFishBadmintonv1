@@ -4,11 +4,51 @@
     <ion-title>{{currentPlayer?.name}}</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
-  <div class="bigPadding">
-    <h1>{{currentPlayer?.name}}</h1>
+<ion-content>
+  <ion-item class="profile">
+      <ion-row> 
+          <ion-col col-3>
+            <p class="title">X</p>
+            <p class="subtitle">POINTS</p>
+          </ion-col>
+          <ion-col class="header-main">
+              <ion-avatar class="profilePicture" (click)="viewPhoto()">
+                  <img [src]="currentPlayer?.profilePic">
+                </ion-avatar>
+          </ion-col>
+          <ion-col col-3>
+              <p><span class="title primary">{{!!currentPlayer?.stats?.win ? currentPlayer.stats.win : 0}}</span><span class="subtitle">/
+               {{!!currentPlayer?.stats ? currentPlayer.stats.lose + currentPlayer.stats.win : 0}}
+              </span></p>
+              <p class="subtitle">WINS</p>
+           </ion-col>
+        </ion-row> 
+        <ion-row>
+          <ion-col class="main" text-center>
+            <h2 class="profileName">{{currentPlayer?.name}}</h2> 
+            <p class="subtitle">{{currentPlayer?.skillLevel}}</p>
+          </ion-col>
+        </ion-row>  
+        <div class="afterProfile" [style.backgroundImage]="'url('+currentPlayer?.profilePic+')'"></div>
+  </ion-item>
+  <ion-card class="shadowDivide" >
+      <ion-row>
+          <ion-col class="iconHolder" col-2>
+              <img src="assets/imgs/statistic.png"/>
+          </ion-col>
+          <ion-col col-10>
+              <h2>Statistics</h2>
+              <ion-badge class="pillFresh pill"><span>{{!!currentPlayer?.stats?.win ? currentPlayer.stats.win : 0}}</span> Wins</ion-badge>
+              <ion-badge class="pillGray pill upperCase"><span>{{!!currentPlayer?.stats?.lose ? currentPlayer.stats.lose : 0}}</span> Loses</ion-badge>
+          </ion-col>
+      </ion-row>
+</ion-card>
+
+   <!--
     <img [src]="currentPlayer?.profilePic">
+    <button ion-button float-left (click)="takePicture()">Camera</button>
+    <button ion-button float-right (click)="takeFromGallery()">Gallery</button>
+    <br/>
     <p>Onboarded? {{currentPlayer?.onboardComplete}}</p>
-    <button ion-button full (click)="logout()">Logout</button>
-  </div>
+    <button ion-button full (click)="logout()">Logout</button>-->
 </ion-content>

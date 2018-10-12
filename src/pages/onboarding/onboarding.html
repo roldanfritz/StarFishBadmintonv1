@@ -1,84 +1,95 @@
 <ion-content>
-  <ion-slides pager>
-    <ion-slide>
-      <h2>Welcome</h2>
-      <p>You are now part of StarFish Badminton. A community of badminton players from around the world!</p>
-      <h3>The next few steps will setup your account so we can find you similar players to play with</h3>
+  <form [formGroup]="onboardingForm">
+  <ion-slides pager #onboard class="onBoardSlides" (ionSlideDidChange)="slideChange()">
+      <ion-slide>
+        <h2>Welcome</h2>
+        <p>You are now part of StarFish Badminton. A community of badminton players from around the world!</p>
+        <h3>The next few steps will setup your account so we can find you similar players to play with</h3>
 
-    </ion-slide>
-
-    <ion-slide>
-        <h2>Location</h2>
-        <p>To begin with, enter your location.</p>
       </ion-slide>
-      <ion-slide >
-          <img src="assets/imgs/gender.png"/>
-            <h2>What is your gender?</h2>
-            <ion-list radio-group>
-              <ion-item>
-                <ion-label>Male</ion-label>
-                <ion-radio checked="true" value="Male"></ion-radio>
-              </ion-item>
-              
-              <ion-item>
-                  <ion-label>Female</ion-label>
-                  <ion-radio value="Female"></ion-radio>
+
+      <ion-slide>
+          <h2>Location</h2>
+          <p>To begin with, enter your location.</p>
+          <p *ngIf="location != null">You are at {{location.thoroughfare}} {{location.subAdministrativeArea}}.</p>
+        </ion-slide>
+        <ion-slide >
+            <img src="assets/imgs/gender.png"/>
+              <h2>What is your gender?</h2>
+              <ion-list radio-group formControlName="gender">
+                  <ion-item>
+                    <ion-label>Don't want to disclose</ion-label>
+                    <ion-radio checked="true" value="na"></ion-radio>
+                  </ion-item>
+                <ion-item>
+                  <ion-label>Male</ion-label>
+                  <ion-radio value="Male"></ion-radio>
                 </ion-item>
-            </ion-list>
-            
-        </ion-slide>
-        <ion-slide>
-            <img src="assets/imgs/question.png"/>
-          <h2>What is your main reason for joining?</h2>
-          <ion-list radio-group >
-            <ion-item>
-              <ion-label>Make new friends</ion-label>
-              <ion-radio checked="true" value="newFriends"></ion-radio>
-            </ion-item>
-            
+                
+                <ion-item>
+                    <ion-label>Female</ion-label>
+                    <ion-radio value="Female"></ion-radio>
+                  </ion-item>
+              </ion-list>
+              
+          </ion-slide>
+          <ion-slide>
+              <img src="assets/imgs/question.png"/>
+            <h2>What is your main reason for joining?</h2>
+            <ion-list radio-group formControlName="reasonForJoining">
               <ion-item>
-                <ion-label>To challenge other players</ion-label>
-                <ion-radio value="challenge"></ion-radio>
-              </ion-item>
-    
-              <ion-item>
-                <ion-label>For fun</ion-label>
-                <ion-radio value="forFun"></ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-label>To become active and healthy</ion-label>
-                <ion-radio value="forHealth"></ion-radio>
-              </ion-item>
-          </ion-list>
-        </ion-slide>
-        
-        <ion-slide>
-            <img src="assets/imgs/playerSkill.png"/>
-            <h2>What is your skill level?</h2>
-            <ion-list radio-group>
-              <ion-item>
-                <ion-label>I'm a beginner</ion-label>
-                <ion-radio checked="true" value="Beginner"></ion-radio>
+                <ion-label>Make new friends</ion-label>
+                <ion-radio checked="true" value="newFriends"></ion-radio>
               </ion-item>
               
                 <ion-item>
-                  <ion-label>I play it recreationally with my friends</ion-label>
-                  <ion-radio value="Recreational"></ion-radio>
+                  <ion-label>To challenge other players</ion-label>
+                  <ion-radio value="challenge"></ion-radio>
                 </ion-item>
       
                 <ion-item>
-                  <ion-label>I play at a club</ion-label>
-                  <ion-radio value="Club"></ion-radio>
+                  <ion-label>For fun</ion-label>
+                  <ion-radio value="forFun"></ion-radio>
                 </ion-item>
                 <ion-item>
-                  <ion-label>I play for a county team</ion-label>
-                  <ion-radio value="County"></ion-radio>
-                </ion-item>
-                <ion-item>
-                  <ion-label>I play it nationally</ion-label>
-                  <ion-radio value="National"></ion-radio>
+                  <ion-label>To become active and healthy</ion-label>
+                  <ion-radio value="forHealth"></ion-radio>
                 </ion-item>
             </ion-list>
           </ion-slide>
-  </ion-slides>
+          
+          <ion-slide>
+              <img src="assets/imgs/playerSkill.png"/>
+              <h2>What is your skill level?</h2>
+              <ion-list radio-group formControlName="skillLevel">
+                <ion-item>
+                  <ion-label>I'm a beginner</ion-label>
+                  <ion-radio checked="true" value="Beginner"></ion-radio>
+                </ion-item>
+                
+                  <ion-item>
+                    <ion-label>I play it recreationally with my friends</ion-label>
+                    <ion-radio value="Recreational"></ion-radio>
+                  </ion-item>
+        
+                  <ion-item>
+                    <ion-label>I play at a club</ion-label>
+                    <ion-radio value="Club"></ion-radio>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>I play for a county team</ion-label>
+                    <ion-radio value="County"></ion-radio>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>I play it nationally</ion-label>
+                    <ion-radio value="National"></ion-radio>
+                  </ion-item>
+              </ion-list>
+            </ion-slide>
+    </ion-slides>
+    
+  </form>
+  <button class="navigationButton prev" ion-button (click)="previous()" *ngIf="!isStart()">Previous</button>
+  <button class="navigationButton next" ion-button (click)="next()" *ngIf="!isEnd()">Next</button>
+  <button class="navigationButton next" ion-button (click)="complete()" *ngIf="isEnd()">Complete</button>
 </ion-content>

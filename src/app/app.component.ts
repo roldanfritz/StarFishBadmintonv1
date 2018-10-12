@@ -19,6 +19,8 @@ export class MyApp {
     public alertCtrl: AlertController, public ps: PlayerService) {
     platform.ready().then(() => {
       this.afAuth.authState.subscribe((user)=>{
+        console.log("AUTH STATE");
+        console.log(user);
         this.rootPage = user ? TabsPage : SignUpPage;
       });
 

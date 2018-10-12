@@ -43,6 +43,8 @@ $app-direction: ltr;
 body, h1,h2,h3,h4,h5,p,span,div{
   font-family: "barlow-regular" !important;
 }
+
+
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
@@ -64,7 +66,7 @@ body, h1,h2,h3,h4,h5,p,span,div{
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #fd9727,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
@@ -90,7 +92,68 @@ $colors: (
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
+.header
+{
+}
 
+.subtitle{
+  font-family:"barlow-regular";
+  font-size: 12px !important;
+  color: rgba(166,166,166,1);
+}
+.title{
+  font-family: "cervoNeue-BoldNeue";
+  font-size: 35px !important;
+  color: rgba(255,255,255,1) !important;
+}
+
+.profilePicture{
+  width: 100px;
+  height: 100px;
+  margin:auto;
+  margin-bottom:0.5em;
+  img{
+    height: 100% !important;
+    width: 100% !important;
+    border: 1px solid rgba(93,93,93,1);
+    padding: 5px;
+    background: transparent;
+    border-radius:10em;
+  }
+}
+
+.profile{
+  position:relative;
+  background: #212121!important;
+  .item-inner{
+    border: none !important;
+  }
+
+  .profileName{
+    font-size:20px;
+    font-family: "barlow-medium";
+    font-size:50px;
+    color: rgba(254,254,254,1);
+    text-align: center;
+    font-size: 1.5em;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  .primary{
+    color:#fd9727 !important;
+  }
+  .afterProfile{
+    background-size:cover;
+    opacity:0.1;
+    background-position:center;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    position:absolute;
+    z-index:-1;
+  }
+}
 
 
 // App Theme

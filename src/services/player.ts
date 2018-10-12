@@ -28,4 +28,9 @@ export class PlayerService{
         if(!currUser) return;
         return this.getPlayer(currUser.uid);
     }
+
+    updatePlayer(playerId, updateObj) 
+    {
+        return this.af.collection('players').doc(playerId).update(updateObj);
+    }
 }
